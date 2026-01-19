@@ -4,7 +4,6 @@ import docs from '../../content/docs/docs.json';
 import { componentRegistry } from '@/app/components/docs/DocsComponentsRegistry';
 import { DocsComponentsRenderer } from '@/app/components/docs/DocsRenderer';
 
-type ComponentId = keyof typeof componentRegistry;
 type BlockType = 'text' | 'heading' | 'code' | 'component';
 
 interface ContentBlock {
@@ -12,42 +11,37 @@ interface ContentBlock {
   value?: string;
   level?: number;
   language?: string;
-  componentId?: ComponentId;
+  componentId?: string;
+}
+
+interface DocSection {
+  title: string;
+  path: string;
+  content: unknown[];
 }
 
 interface Props {
   params: Promise<{ slug?: string[] }>;
 }
 
-const isValidComponentId = (id: unknown): id is ComponentId => {
-  return typeof id === 'string' && id in componentRegistry;
-};
-
 const isValidBlockType = (type: unknown): type is BlockType => {
   return type === 'text' || type === 'heading' || type === 'code' || type === 'component';
 };
 
-const normalizeContentBlock = (block: unknown): ContentBlock | null => {
+const normalizeBlock = (block: unknown): ContentBlock | null => {
   if (!block || typeof block !== 'object') return null;
 
   const b = block as Record<string, unknown>;
 
-  // Valida il tipo
   if (!isValidBlockType(b.type)) return null;
 
-  const normalized: ContentBlock = {
+  return {
     type: b.type,
     value: typeof b.value === 'string' ? b.value : undefined,
-    language: typeof b.language === 'string' ? b.language : undefined,
     level: typeof b.level === 'number' ? b.level : undefined,
+    language: typeof b.language === 'string' ? b.language : undefined,
+    componentId: typeof b.componentId === 'string' ? b.componentId : undefined,
   };
-
-  // Aggiungi componentId solo se valido
-  if (isValidComponentId(b.componentId)) {
-    normalized.componentId = b.componentId;
-  }
-
-  return normalized;
 };
 
 export default async function Page({ params }: Props) {
@@ -62,16 +56,19 @@ export default async function Page({ params }: Props) {
   const currentSlug = '/docs/' + slugArray.join('/');
 
   const section = docs.sections
-    .flatMap(cat => cat.items)
-    .find(item => item.path === currentSlug);
+    .flatMap((cat: Record<string, unknown>) => {
+      const items = cat.items;
+      return Array.isArray(items) ? items : [];
+    })
+    .find((item: Record<string, unknown>) => item.path === currentSlug) as DocSection | undefined;
 
   if (!section) {
     return <p>Page not found: {currentSlug}</p>;
   }
 
   const contentWithComponents: ContentBlock[] = section.content
-    .map(normalizeContentBlock)
-    .filter((block): block is ContentBlock => block !== null);
+    .map((block: unknown) => normalizeBlock(block))
+    .filter((block: ContentBlock | null): block is ContentBlock => block !== null);
 
   return (
     <article className="prose mx-auto py-8">

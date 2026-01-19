@@ -4,15 +4,16 @@ import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { componentRegistry } from './DocsComponentsRegistry';
 
-// Estrai le chiavi valide dal registry
 type ComponentId = keyof typeof componentRegistry;
 
+type BlockType = 'text' | 'heading' | 'code' | 'component';
+
 interface ContentBlock {
-  type: 'text' | 'heading' | 'code' | 'component';
+  type: BlockType;
   value?: string;
   level?: number;
   language?: string;
-  componentId?: ComponentId;
+  componentId?: string;
 }
 
 interface DocsComponentsRendererProps {
@@ -26,14 +27,16 @@ export const DocsComponentsRenderer: React.FC<DocsComponentsRendererProps> = ({ 
 
   return (
     <div className="documentation-content space-y-4">
-      {content.map((block, index) => {
+      {content.map((block: ContentBlock, index: number) => {
         switch (block.type) {
           case 'text':
             return <p key={index}>{block.value}</p>;
 
-          case 'heading':
-            const HeadingTag = `h${block.level || 2}` as keyof React.JSX.IntrinsicElements;
+          case 'heading': {
+            const level = typeof block.level === 'number' ? block.level : 2;
+            const HeadingTag = `h${level}` as keyof React.JSX.IntrinsicElements;
             return <HeadingTag key={index}>{block.value}</HeadingTag>;
+          }
 
           case 'code':
             return (
@@ -53,7 +56,8 @@ export const DocsComponentsRenderer: React.FC<DocsComponentsRendererProps> = ({ 
             return <div key={index} className="text-red-500">Component not found: {block.componentId}</div>;
 
           default:
-            return null;
+            const _exhaustive: never = block.type;
+            return _exhaustive;
         }
       })}
     </div>
