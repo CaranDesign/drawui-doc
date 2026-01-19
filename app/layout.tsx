@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   description: "A simple and small library with User Interface Components in Sketchy Style",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,13 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body
-        className={`${playPenSans.variable} antialiased`}
+        className={`${playPenSans.variable} antialiased bg-dotted`}
       >
         <ScreenWidthProvider>
           <Header/>
           {children}
           <Footer/>
-      </ScreenWidthProvider>
+        </ScreenWidthProvider>
       </body>
     </html>
   );

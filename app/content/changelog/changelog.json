@@ -1,0 +1,28 @@
+[
+  {
+    "version": "0.2.2",
+    "date": "2026-01-19",
+    "changes": [
+      {
+        "title": "Added FillStyles",
+        "type":"add",
+        "items": [
+          "Added responsive height to DrawuiCard base on body (children) content"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.2.1",
+    "date": "2026-01-19",
+    "changes": [
+      {
+        "title": "Added FillStyles",
+        "type":"add",
+        "items": [
+          "Added FillStyles property from raugh.js library for rendering different types of filling in components"
+        ]
+      }
+    ]
+  }
+]

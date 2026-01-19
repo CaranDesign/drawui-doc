@@ -1,10 +1,10 @@
 'use client'
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
-import { DrawuiButton, DrawuiDivider } from "@carandesign/drawui";
+import { useWindowWidthContext } from "./context/ContextScreenSize";
 import ComponentShow from "./components/home/ComponentShow";
 import HeroSection from "./components/home/HeroSection";
-import { useWindowWidthContext } from "./context/ContextScreenSize";
+import { DrawuiDivider } from "@carandesign/drawui";
 
 export default function App() {
   const screenWidth = useWindowWidthContext()
@@ -19,7 +19,7 @@ export default function App() {
   if (!mounted) return null
 
   return (
-    <div className="bg-dotted">
+    <div className="overflow-x-hidden">
       {/* Hero Section */}
       <section className="">
         <HeroSection/>

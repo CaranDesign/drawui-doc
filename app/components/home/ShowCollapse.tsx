@@ -11,15 +11,15 @@ export default function ShowCollapse() {
         {
            sizes.map((width,index) => (
               <DrawuiCollapse
-                  className='cursor-pointer'     
-                  key={width=index}
+                  className='cursor-pointer'
+                  key={width+index}
                   width={width}
                   header={
                      <span>Click me.</span>
                   }
                >
                   <DrawuiCard className='mt-3' width={width} backgroundColor={getRandomColor()}>
-                     Content in a Card
+                     <p className='p-5'>Content in a Card</p>
                   </DrawuiCard>
             </DrawuiCollapse>
            ))

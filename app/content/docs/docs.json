@@ -1,0 +1,704 @@
+{
+  "sections": [
+    {
+      "id": "getting-started",
+      "label": "Getting Started",
+      "type": "category",
+      "items": [
+        {
+          "id": "introduction",
+          "path": "/docs/introduction",
+          "label": "Introduction",
+          "title": "Introduction to DrawUI",
+          "description": "A React component library with hand-drawn, sketchy appearance powered by Rough.js",
+          "keywords": ["introduction", "overview", "sketchy", "hand-drawn", "rough.js"],
+          "content": [
+            {
+              "type": "text",
+              "value": "DrawUI is a React component library that brings a unique, hand-drawn aesthetic to your applications. Built on top of Rough.js, it provides a collection of UI components with a sketchy, organic appearance that stands out from traditional design systems."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Why DrawUI?"
+            },
+            {
+              "type": "text",
+              "value": "DrawUI offers a playful and creative alternative to conventional UI libraries. Perfect for portfolios, creative projects, educational tools, or any application where you want to add personality and warmth to the user interface."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Key Features"
+            },
+            {
+              "type": "text",
+              "value": "- Hand-drawn sketchy appearance powered by Rough.js\n- Comprehensive theming system with customizable tokens\n- Consistent design language across all components\n- Built with TypeScript for excellent type safety\n- Lightweight and performant\n- Easy to integrate with existing React projects"
+            },
+            {
+              "type": "component",
+              "componentId": "IntroDemo"
+            }
+          ]
+        },
+        {
+          "id": "installation",
+          "path": "/docs/installation",
+          "label": "Installation",
+          "title": "Installation Guide",
+          "description": "How to install and set up DrawUI in your project",
+          "keywords": ["install", "setup", "npm", "yarn", "getting started"],
+          "content": [
+            {
+              "type": "text",
+              "value": "Install DrawUI using your preferred package manager:"
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "value": "npm install @carandesign/drawui\n# or\nyarn add @carandesign/drawui\n# or\npnpm add @carandesign/drawui"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Peer Dependencies"
+            },
+            {
+              "type": "text",
+              "value": "DrawUI requires React and Rough.js as peer dependencies:"
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "value": "npm install react react-dom roughjs"
+            }
+          ]
+        },
+        {
+          "id": "quick-start",
+          "path": "/docs/quick-start",
+          "label": "Quick Start",
+          "title": "Quick Start Guide",
+          "description": "Get up and running with DrawUI in minutes",
+          "keywords": ["quick start", "tutorial", "first steps", "example"],
+          "content": [
+            {
+              "type": "text",
+              "value": "To start using DrawUI components, wrap your application with the DrawuiThemeProvider:"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiThemeProvider, DrawuiButton } from  '@carandesign/drawui';\n\nfunction App() {\n  return (\n    <DrawuiThemeProvider>\n      <DrawuiButton>Click me!</DrawuiButton>\n    </DrawuiThemeProvider>\n  );\n}"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Example"
+            },
+            {
+              "type": "component",
+              "componentId": "QuickStartDemo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theming",
+      "label": "Theming",
+      "type": "category",
+      "items": [
+        {
+          "id": "theme-overview",
+          "path": "/docs/overview",
+          "label": "Theme Overview",
+          "title": "Understanding DrawUI Theming",
+          "description": "Learn about the theming system and design tokens",
+          "keywords": ["theme", "tokens", "customization", "design system"],
+          "content": [
+            {
+              "type": "text",
+              "value": "DrawUI uses a comprehensive token-based theming system that allows you to customize the appearance of all components consistently. The theme is built around five main token categories: stroke, roughness, fill, radius, and size."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Theme Structure"
+            },
+            {
+              "type": "text",
+              "value": "The theme object follows this structure:"
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "value": "interface DrawuiTheme {\n  stroke: Record<StrokeWeight, DrawuiStroke>;\n  roughness: DrawuiRoughness;\n  fill: { background: string };\n  radius: Record<RadiusToken, number>;\n  buttonSize: Record<SizeToken, DrawuiButtonSize>;\n  inputSize: Record<SizeToken, DrawuiInputSize>;\n}"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Default Theme"
+            },
+            {
+              "type": "component",
+              "componentId": "DefaultThemeDisplay"
+            }
+          ]
+        },
+        {
+          "id": "theme-provider",
+          "path": "/docs/theming/provider",
+          "label": "Theme Provider",
+          "title": "Using the Theme Provider",
+          "description": "How to configure and customize your theme",
+          "keywords": ["theme provider", "custom theme", "configuration"],
+          "content": [
+            {
+              "type": "text",
+              "value": "The DrawuiThemeProvider component wraps your application and provides theme context to all DrawUI components."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiThemeProvider } from '@carandesign/drawui';\n\nfunction App() {\n  return (\n    <DrawuiThemeProvider>\n      {/* Your app components */}\n    </DrawuiThemeProvider>\n  );\n}"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Custom Theme"
+            },
+            {
+              "type": "text",
+              "value": "You can provide a custom theme object to override default values:"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiThemeProvider } from '@carandesign/drawui';\nimport type { DrawuiTheme } from '@carandesign/drawui';\n\nconst customTheme: Partial<DrawuiTheme> = {\n  stroke: {\n    thin: { color: '#2c3e50', width: 1.5 },\n    medium: { color: '#2c3e50', width: 2.5 },\n    thick: { color: '#2c3e50', width: 4 },\n  },\n  fill: {\n    background: '#ecf0f1',\n  },\n  roughness: {\n    roughness: 2,\n    bowing: 1,\n  },\n};\n\nfunction App() {\n  return (\n    <DrawuiThemeProvider theme={customTheme}>\n      {/* Your app components */}\n    </DrawuiThemeProvider>\n  );\n}"
+            }
+          ]
+        },
+        {
+          "id": "theme-tokens",
+          "path": "/docs/theming/tokens",
+          "label": "Design Tokens",
+          "title": "Design Tokens Reference",
+          "description": "Complete reference of all design tokens",
+          "keywords": ["tokens", "stroke", "roughness", "radius", "size", "fill"],
+          "content": [
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Stroke Tokens"
+            },
+            {
+              "type": "text",
+              "value": "Stroke tokens define the border weight and color of components. Available weights: thin, medium, thick."
+            },
+            {
+              "type": "component",
+              "componentId": "StrokeTokensTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Roughness Tokens"
+            },
+            {
+              "type": "text",
+              "value": "Roughness controls the sketchy appearance intensity. Higher values create more irregular, hand-drawn effects."
+            },
+            {
+              "type": "component",
+              "componentId": "RoughnessTokensTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Radius Tokens"
+            },
+            {
+              "type": "text",
+              "value": "Radius tokens define corner roundness. Available values: none, sm, md, lg, full."
+            },
+            {
+              "type": "component",
+              "componentId": "RadiusTokensTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Size Tokens"
+            },
+            {
+              "type": "text",
+              "value": "Size tokens are component-specific and define dimensions. Available sizes: sm, md, lg, xl."
+            },
+            {
+              "type": "component",
+              "componentId": "SizeTokensTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Fill Styles"
+            },
+            {
+              "type": "text",
+              "value": "Fill styles from Rough.js define how shapes are filled. Available styles: hachure, solid, zigzag, cross-hatch, dots, sunburst, dashed, zigzag-line."
+            },
+            {
+              "type": "component",
+              "componentId": "FillStylesDemo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "label": "Components",
+      "type": "category",
+      "items": [
+        {
+          "id": "button",
+          "path": "/docs/components/button",
+          "label": "Button",
+          "title": "Button Component",
+          "description": "A sketchy button component with customizable appearance",
+          "keywords": ["button", "click", "interactive", "CTA"],
+          "content": [
+            {
+              "type": "text",
+              "value": "The DrawuiButton component provides a hand-drawn button with customizable stroke, radius, size, and fill."
+            },
+            {
+              "type": "component",
+              "componentId": "ButtonDemo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Import"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiButton } from '@carandesign/drawui';"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiButton>Click Me!</DrawuiButton>"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Props"
+            },
+            {
+              "type": "component",
+              "componentId": "ButtonPropsTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Examples"
+            },
+            {
+              "type": "component",
+              "componentId": "ButtonExamples"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Sizes"
+            },
+            {
+              "type": "text",
+              "value": "Buttons come in four sizes: sm, md, lg, and xl."
+            },
+            {
+              "type": "component",
+              "componentId": "ButtonSizesDemo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Stroke Weights"
+            },
+            {
+              "type": "component",
+              "componentId": "ButtonStrokeDemo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Border Radius"
+            },
+            {
+              "type": "component",
+              "componentId": "ButtonRadiusDemo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Fill Styles"
+            },
+            {
+              "type": "component",
+              "componentId": "ButtonFillDemo"
+            }
+          ]
+        },
+        {
+          "id": "icon-button",
+          "path": "/docs/components/icon-button",
+          "label": "IconButton",
+          "title": "IconButton Component",
+          "description": "A sketchy icon button for compact actions",
+          "keywords": ["icon button", "icon", "compact", "action"],
+          "content": [
+            {
+              "type": "text",
+              "value": "The DrawuiIconButton is a compact button designed specifically for icons."
+            },
+            {
+              "type": "component",
+              "componentId": "icon-button-demo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Import"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiIconButton } from '@carandesign/drawui';\nimport { IconSearch } from 'drawui/icons';"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiIconButton icon={<IconSearch />}>"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Props"
+            },
+            {
+              "type": "component",
+              "componentId": "IconButtonPropsTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Examples"
+            },
+            {
+              "type": "component",
+              "componentId": "IconButtonExamples"
+            }
+          ]
+        },
+        {
+          "id": "card",
+          "path": "/docs/components/card",
+          "label": "Card",
+          "title": "Card Component",
+          "description": "A sketchy container with optional header and footer",
+          "keywords": ["card", "container", "panel", "box"],
+          "content": [
+            {
+              "type": "text",
+              "value": "The DrawuiCard component provides a versatile container with optional header and footer sections."
+            },
+            {
+              "type": "component",
+              "componentId": "CardDemo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Import"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiCard } from '@carandesign/drawui';"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiCard width={300} height={200}>\n  Card content\n</DrawuiCard>"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Props"
+            },
+            {
+              "type": "component",
+              "componentId": "CardPropsTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "With Header and Footer"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiCard \n  width={300} \n  height={200}\n  header={<h3>Card Title</h3>}\n  footer={<button>Action</button>}\n>\n  Card content goes here\n</DrawuiCard>"
+            },
+            {
+              "type": "component",
+              "componentId": "CardExamples"
+            }
+          ]
+        },
+        {
+          "id": "divider",
+          "path": "/docs/components/divider",
+          "label": "Divider",
+          "title": "Divider Component",
+          "description": "A sketchy horizontal divider line",
+          "keywords": ["divider", "separator", "line", "hr"],
+          "content": [
+            {
+              "type": "text",
+              "value": "The DrawuiDivider component creates a hand-drawn horizontal separator line."
+            },
+            {
+              "type": "component",
+              "componentId": "DividerDemo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Import"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiDivider } from '@carandesign/drawui';"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiDivider width={300} />"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Props"
+            },
+            {
+              "type": "component",
+              "componentId": "DividerPropsTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Examples"
+            },
+            {
+              "type": "component",
+              "componentId": "DividerExample"
+            }
+          ]
+        },
+        {
+          "id": "collapse",
+          "path": "/docs/components/collapse",
+          "label": "Collapse",
+          "title": "Collapse Component",
+          "description": "An expandable/collapsible panel component",
+          "keywords": ["collapse", "accordion", "expandable", "panel"],
+          "content": [
+            {
+              "type": "text",
+              "value": "The DrawuiCollapse component provides an expandable/collapsible panel with a sketchy appearance."
+            },
+            {
+              "type": "component",
+              "componentId": "CollapseDemo"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Import"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiCollapse } from '@carandesign/drawui';"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiCollapse header={<span className='px-5'>Click to expand</span>}>\n  <div className='mt-3'>\n    <DrawuiCard>\n      <p className='p-5'>This is the expandable content with a Card</p>\n    </DrawuiCard>\n  </div>\n</DrawuiCollapse>"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Props"
+            },
+            {
+              "type": "component",
+              "componentId": "CollapsePropsTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Examples"
+            },
+            {
+              "type": "component",
+              "componentId": "CollapseExamples"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "icons",
+      "label": "Icons",
+      "type": "category",
+      "items": [
+        {
+          "id": "icons-overview",
+          "path": "/docs/icons/overview",
+          "label": "Overview",
+          "title": "Icons Overview",
+          "description": "Built-in icon set for DrawUI",
+          "keywords": ["icons", "svg", "graphics"],
+          "content": [
+            {
+              "type": "text",
+              "value": "DrawUI includes a set of built-in icons designed to match the sketchy aesthetic of the library."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Available Icons"
+            },
+            {
+              "type": "component",
+              "componentId": "IconsGallery"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Import"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { IconHome, IconSearch, IconUser } from '@carandesign/drawui';"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<IconHome size={24} color=\"#333\" />"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Icon List"
+            },
+            {
+              "type": "text",
+              "value": "- IconBell: Notification bell icon\n- IconHome: Home icon\n- IconMinus: Minus/subtract icon\n- IconPlus: Plus/add icon\n- IconSearch: Search/magnifying glass icon\n- IconSettings: Settings/gear icon\n- IconUser: User/profile icon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "type": "category",
+      "items": [
+        {
+          "id": "rough-js-integration",
+          "path": "/docs/advanced/rough-js",
+          "label": "Rough.js Integration",
+          "title": "Understanding Rough.js Integration",
+          "description": "How DrawUI leverages Rough.js for sketchy rendering",
+          "keywords": ["rough.js", "svg", "rendering", "sketchy"],
+          "content": [
+            {
+              "type": "text",
+              "value": "DrawUI is built on top of Rough.js, a lightweight graphics library that creates graphics with a hand-drawn, sketchy appearance. All DrawUI components use Rough.js under the hood to render SVG elements."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "How It Works"
+            },
+            {
+              "type": "text",
+              "value": "Each component uses React refs to access SVG elements and Rough.js to draw shapes. The rendering happens in useEffect hooks, ensuring the sketchy appearance updates when props or theme values change."
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "const rc = rough.svg(svgRef.current);\nconst node = rc.path(\n  roundedRect(0, 0, width, height, radius),\n  {\n    stroke: strokeColor,\n    strokeWidth: strokeWidth,\n    fill: backgroundColor,\n    roughness: roughnessValue,\n    bowing: bowingValue,\n    fillStyle: fillStyle,\n  }\n);"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Rough.js Properties"
+            },
+            {
+              "type": "text",
+              "value": "DrawUI exposes several Rough.js properties through component props:\n\n- roughness: Controls the irregularity of lines (controlled via theme)\n- bowing: Controls how much lines curve (controlled via theme)\n- fillStyle: Defines how shapes are filled (hachure, solid, zigzag, etc.)\n- stroke: Border color and width\n- fill: Background color"
+            },
+            {
+              "type": "text",
+              "value": "Special Thank You to Preet Shihn for Rough JS library and all his work"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-import { DrawuiButton, RadiusToken, SizeToken } from '@carandesign/drawui';
-import React from 'react'
+import { getRandomColor } from '@/app/lib/GetRandomColor';
+import { DrawuiButton, FillStyles, RadiusToken, SizeToken } from '@carandesign/drawui';
 
 export default function ShowButtonProperties() {
    
@@ -8,28 +8,33 @@ export default function ShowButtonProperties() {
       size: SizeToken;
       radius?: RadiusToken;
       color?: string;
+      fillStyle: FillStyles;
    };
 
-     const buttonVariants: ButtonVariant[] = [
-      { size: "sm", color: "#f87171", radius: "sm" },
-      { size: "md", color: "#60a5fa", radius: "md" },
-      { size: "lg", color: "#34d399", radius: "lg" },
-      { size: "xl", color: "#facc15", radius: "full" },
-     ];
+   const buttonVariants: ButtonVariant[] = [
+      { size: "sm", color: getRandomColor(), radius: "sm",   fillStyle: "cross-hatch" },
+      { size: "md", color: getRandomColor(), radius: "md",   fillStyle: "dashed" },
+      { size: "lg", color: getRandomColor(), radius: "lg",   fillStyle: "dots" },
+      { size: "xl", color: getRandomColor(), radius: "full", fillStyle: "hachure" },
+      { size: "sm", color: getRandomColor(), radius: "sm",   fillStyle: "solid" },
+      { size: "md", color: getRandomColor(), radius: "md",   fillStyle: "sunburst" },
+      { size: "md", color: getRandomColor(), radius: "lg",   fillStyle: "zigzag" },
+      { size: "sm", color: getRandomColor(), radius: "full", fillStyle: "zigzag-line" },
+   ];
+
    
   return (
-    
-<div className="flex flex-wrap gap-2 items-center justify-center">
-   {buttonVariants.map((btn, i) => (
-      <DrawuiButton
-      key={i}
-      size={btn.size}
-      backgroundColor={btn.color}
-      >
-      {btn.size.toUpperCase()} Button
-      </DrawuiButton>
-   ))}
-</div>
-    
+   <div className="flex flex-wrap gap-2 items-center justify-center">
+      {buttonVariants.map((btn, i) => (
+         <DrawuiButton
+            key={i}
+            size={btn.size}
+            backgroundColor={btn.color}
+            fillStyle={btn.fillStyle}
+         >
+            {btn.size.toUpperCase()} Button
+         </DrawuiButton>
+      ))}
+   </div>        
   )
 }

@@ -17,7 +17,7 @@ export default function ComponentShow() {
         Buttons Exmaples
         <ShowButton />
         
-        Buttons Sizes and Colors
+        In different Sizes, Colors and Fillings...
         <ShowButtonProperties />
         
         Icon Button

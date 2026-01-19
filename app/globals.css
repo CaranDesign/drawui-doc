@@ -22,7 +22,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fff5f5;
+    --background: #ffffff;
     --foreground: #171717;
   }
 }
@@ -39,6 +39,6 @@ body {
 }
 
 .bg-dotted{
-  background-image: radial-gradient(#937e7e72 1px, transparent 1px);
+  background-image: radial-gradient(#937e7e3a 1px, transparent 1px); 
   background-size: 20px 20px;
 }

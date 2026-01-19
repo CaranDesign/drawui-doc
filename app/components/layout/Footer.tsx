@@ -22,8 +22,8 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="dark:bg-gray-900 text-gray-700 dark:text-gray-300 mt-12">
-      <DrawuiCard width={screenWidth} height={65}>
-        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+      <DrawuiCard width={screenWidth} backgroundColor="#f3f3f3ff">
+        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between">
           <p className="text-sm">&copy; {year} DrawUI is released on MIT license - made by <Link target="_blank" className="cursor-pointer" href={"https://www.caran.it"}>Caran Design</Link></p>
           <div className="flex space-x-4 mt-2 md:mt-0">
             <PrimaryNavigation/>
