@@ -9,7 +9,7 @@ type ChangelogItem = {
   date?: string;
   changes: {
     title: string;
-    type?: "add" | "change" | "fix" | "remove" | string;
+    type: "add" | "change" | "fix" | "remove" | string;
     items: string[];
   }[];
 };
@@ -18,7 +18,6 @@ interface ChangelogProps {
   changelog: ChangelogItem[];
 }
 
-      
 
 export const ChangelogRenderer: React.FC<ChangelogProps> = ({ changelog }) => {
    const screenWidth = useWindowWidthContext()
