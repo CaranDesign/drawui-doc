@@ -4,12 +4,15 @@ import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { componentRegistry } from './DocsComponentsRegistry';
 
+// Estrai le chiavi valide dal registry
+type ComponentId = keyof typeof componentRegistry;
+
 interface ContentBlock {
   type: 'text' | 'heading' | 'code' | 'component';
   value?: string;
   level?: number;
   language?: string;
-  componentId?: string;
+  componentId?: ComponentId;
 }
 
 interface DocsComponentsRendererProps {
@@ -17,6 +20,10 @@ interface DocsComponentsRendererProps {
 }
 
 export const DocsComponentsRenderer: React.FC<DocsComponentsRendererProps> = ({ content }) => {
+  const isValidComponentId = (id: string | undefined): id is ComponentId => {
+    return id !== undefined && id in componentRegistry;
+  };
+
   return (
     <div className="documentation-content space-y-4">
       {content.map((block, index) => {
@@ -39,13 +46,11 @@ export const DocsComponentsRenderer: React.FC<DocsComponentsRendererProps> = ({ 
             );
 
           case 'component':
-            console.log('Looking for component:', block.componentId);
-
-            if (block.componentId) {
+            if (isValidComponentId(block.componentId)) {
               const Component = componentRegistry[block.componentId];
-              return Component ? <Component key={index} /> : <div key={index} className="text-red-500">Component not found</div>;
+              return <Component key={index} />;
             }
-            return <div key={index} className="text-red-500">Component not found</div>;
+            return <div key={index} className="text-red-500">Component not found: {block.componentId}</div>;
 
           default:
             return null;

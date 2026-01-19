@@ -4,13 +4,55 @@ import docs from '../../content/docs/docs.json';
 import { componentRegistry } from '@/app/components/docs/DocsComponentsRegistry';
 import { DocsComponentsRenderer } from '@/app/components/docs/DocsRenderer';
 
-interface Props {
-  params: Promise<{ slug?: string[] }>; 
+type ComponentId = keyof typeof componentRegistry;
+type BlockType = 'text' | 'heading' | 'code' | 'component';
+
+interface ContentBlock {
+  type: BlockType;
+  value?: string;
+  level?: number;
+  language?: string;
+  componentId?: ComponentId;
 }
 
+interface Props {
+  params: Promise<{ slug?: string[] }>;
+}
+
+const isValidComponentId = (id: unknown): id is ComponentId => {
+  return typeof id === 'string' && id in componentRegistry;
+};
+
+const isValidBlockType = (type: unknown): type is BlockType => {
+  return type === 'text' || type === 'heading' || type === 'code' || type === 'component';
+};
+
+const normalizeContentBlock = (block: unknown): ContentBlock | null => {
+  if (!block || typeof block !== 'object') return null;
+
+  const b = block as Record<string, unknown>;
+
+  // Valida il tipo
+  if (!isValidBlockType(b.type)) return null;
+
+  const normalized: ContentBlock = {
+    type: b.type,
+    value: typeof b.value === 'string' ? b.value : undefined,
+    language: typeof b.language === 'string' ? b.language : undefined,
+    level: typeof b.level === 'number' ? b.level : undefined,
+  };
+
+  // Aggiungi componentId solo se valido
+  if (isValidComponentId(b.componentId)) {
+    normalized.componentId = b.componentId;
+  }
+
+  return normalized;
+};
+
 export default async function Page({ params }: Props) {
-  const resolvedParams = await params; 
-  
+  const resolvedParams = await params;
+
   const slugArray = Array.isArray(resolvedParams.slug)
     ? resolvedParams.slug
     : resolvedParams.slug
@@ -27,16 +69,9 @@ export default async function Page({ params }: Props) {
     return <p>Page not found: {currentSlug}</p>;
   }
 
-  const contentWithComponents = section.content.map((block) => {
-    if (block.type === 'component' && block.componentId) {
-      const Comp = componentRegistry[block.componentId];
-      if (!Comp) {
-        return { ...block, value: `Component "${block.componentId}" not found` };
-      }
-      return { ...block, Component: Comp };
-    }
-    return block;
-  });
+  const contentWithComponents: ContentBlock[] = section.content
+    .map(normalizeContentBlock)
+    .filter((block): block is ContentBlock => block !== null);
 
   return (
     <article className="prose mx-auto py-8">
