@@ -2,11 +2,12 @@
 
 import Logo from "./Logo"
 import PrimaryNavigation from "../PrimaryNavigation"
-import { DrawuiCard, DrawuiIconButton } from "@carandesign/drawui"
+import { DrawuiCard, DrawuiIconButton, DrawuiInput } from "@carandesign/drawui"
 import { useWindowWidthContext } from "@/app/context/ContextScreenSize"
 import { useState, useLayoutEffect } from "react"
 import MenuIcon from "./MenuIcon"
 import DocsNavigationMenu from "../docs/DocsNavigationMenu"
+import SearchInput from "../SearchInput"
 
 export default function Header() {
   const screenWidth = useWindowWidthContext()
@@ -37,7 +38,10 @@ export default function Header() {
               </div>
   
               <Logo />
-              <div className="hidden md:flex"><PrimaryNavigation /></div>
+              <div className="hidden  md:flex gap-4 items-center">
+                <PrimaryNavigation />
+                <SearchInput/>
+              </div>
             </div>
           </div>
         </DrawuiCard>

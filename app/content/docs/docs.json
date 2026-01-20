@@ -536,6 +536,86 @@
           ]
         },
         {
+          "id": "drawui-input",
+          "path": "/docs/components/input",
+          "label": "DrawuiInput",
+          "title": "DrawuiInput Component",
+          "description": "A sketchy input field component with customizable stroke, radius, fill, and size, powered by Rough.js",
+          "keywords": ["input", "text field", "sketchy", "hand-drawn", "rough.js", "form"],
+          "content": [
+            {
+              "type": "text",
+              "value": "The `DrawuiInput` component provides a hand-drawn styled input field that can be customized with different stroke weights, background colors, radii, and input sizes. It leverages Rough.js to render a sketchy, organic border around the input, giving it a playful, handmade appearance."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Import"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "import { DrawuiInput } from '@carandesign/drawui';"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Basic Usage"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiInput placeholder=\"Enter text here\" />"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Props"
+            },
+            {
+              "type": "component",
+              "componentId": "DrawuiInputPropsTable"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Customizable Options"
+            },
+            {
+              "type": "text",
+              "value": "- `strokeWeight`: Adjusts the thickness of the sketchy border. Options: `thin`, `medium`, `thick`. Default is `medium`.\n- `backgroundColor`: Sets the fill color of the input area.\n- `radius`: Sets the corner radius. Options: `none`, `sm`, `md`, `lg`, `full`. Default is `md`.\n- `inputSize`: Controls the height, font size, and padding. Options: `sm`, `md`, `lg`. Default is `md`.\n- `fillStyle`: Determines the Rough.js fill style. Options: `hachure`, `solid`, `zigzag`, `dots`, etc."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Example with Custom Props"
+            },
+            {
+              "type": "code",
+              "language": "tsx",
+              "value": "<DrawuiInput \n  placeholder=\"Search...\" \n  strokeWeight=\"thick\" \n  backgroundColor=\"#fefefe\" \n  radius=\"lg\" \n  inputSize=\"lg\" \n  fillStyle=\"solid\" \n/>"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Behavior"
+            },
+            {
+              "type": "text",
+              "value": "The component reacts to `focus` and `hover` states:\n- When focused, the sketchiness increases slightly to indicate active state.\n- Hovering over the input slightly changes the sketch lines for a subtle interactive feedback.\n\nAll other standard input events (`onChange`, `onFocus`, `onBlur`) are fully supported."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "value": "Notes"
+            },
+            {
+              "type": "text",
+              "value": "- The input is fully accessible and supports keyboard navigation.\n- Styling can be combined with Tailwind or custom CSS modules.\n- The Rough.js SVG is positioned absolutely behind the input, with `pointer-events: none` to ensure the input remains interactive."
+            }
+          ]
+        },
+        {
           "id": "collapse",
           "path": "/docs/components/collapse",
           "label": "Collapse",

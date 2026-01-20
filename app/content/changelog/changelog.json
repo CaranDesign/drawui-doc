@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.4",
+    "date": "2026-01-20",
+    "changes": [
+      {
+        "title": "Added DrawuiInput Component",
+        "type":"add",
+        "items": [
+          "Added a new DrawuiInput component for handling small inputs"
+        ]
+      }
+    ]
+  },
+  {
     "version": "0.2.3",
     "date": "2026-01-20",
     "changes": [

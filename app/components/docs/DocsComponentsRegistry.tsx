@@ -98,6 +98,80 @@ export const QuickStartDemo: React.FC = () => (
   </div>
 );
 
+const DrawuiInputPropsTable: React.FC = () => {
+  return (
+    <div className='max-w-md sm:max-w-full overflow-x-scroll'>
+      <table className='table-auto'>
+        <thead>
+          <tr style={{ borderBottom: '2px solid #333' }}>
+            <th className="p-3 text-left">Prop</th>
+            <th className="p-3 text-left">Type</th>
+            <th className="p-3 text-left">Default</th>
+            <th className="p-3 text-left">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">strokeWeight</td>
+            <td className="p-3">thin | medium | thick</td>
+            <td className="p-3">medium</td>
+            <td className="p-3">Border thickness of the sketchy outline</td>
+          </tr>
+
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">radius</td>
+            <td className="p-3">none | sm | md | lg | full</td>
+            <td className="p-3">md</td>
+            <td className="p-3">Corner roundness of the input shape</td>
+          </tr>
+
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">inputSize</td>
+            <td className="p-3">sm | md | lg | xl</td>
+            <td className="p-3">md</td>
+            <td className="p-3">Controls height, font size and horizontal padding</td>
+          </tr>
+
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">backgroundColor</td>
+            <td className="p-3">string</td>
+            <td className="p-3">theme.fill.background</td>
+            <td className="p-3">Input background fill color</td>
+          </tr>
+
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">fillStyle</td>
+            <td className="p-3">FillStyles</td>
+            <td className="p-3">undefined</td>
+            <td className="p-3">Rough.js fill pattern used inside the input</td>
+          </tr>
+
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">className</td>
+            <td className="p-3">string</td>
+            <td className="p-3">undefined</td>
+            <td className="p-3">Custom CSS class applied to the wrapper</td>
+          </tr>
+
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">style</td>
+            <td className="p-3">React.CSSProperties</td>
+            <td className="p-3">undefined</td>
+            <td className="p-3">Inline styles for the input wrapper</td>
+          </tr>
+
+          <tr className='border-b-1 border-gray-300'>
+            <td className="p-3">…input props</td>
+            <td className="p-3">React.InputHTMLAttributes</td>
+            <td className="p-3">-</td>
+            <td className="p-3">All native HTML input attributes are supported</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 
 const StrokeTokensTable: React.FC = () => {
   const strokes: StrokeWeight[] = ['thin', 'medium', 'thick'];
@@ -192,82 +266,86 @@ const SizeTokensTable: React.FC = () => {
   return (
     <div style={{ margin: '20px 0' }}>
       <h4>Button Sizes</h4>
-      <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '24px' }}>
-        <thead>
-          <tr style={{ borderBottom: '2px solid #333' }}>
-            <th className='p-3 text-left'>Token</th>
-            <th className='p-3 text-left'>Width</th>
-            <th className='p-3 text-left'>Height</th>
-            <th className='p-3 text-left'>Font Size</th>
-            <th className='p-3 text-left'>Preview</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sizes.map((size) => (
-            <tr key={size} className='border-b-1 border-gray-300'>
-              <td className="p-3">{size}</td>
-              <td className="p-3">
-                {size === 'sm' && '100px'}
-                {size === 'md' && '130px'}
-                {size === 'lg' && '150px'}
-                {size === 'xl' && '170px'}
-              </td>
-              <td className="p-3">
-                {size === 'sm' && '40px'}
-                {size === 'md' && '50px'}
-                {size === 'lg' && '60px'}
-                {size === 'xl' && '70px'}
-              </td>
-              <td className="p-3">
-                {size === 'sm' && '12px'}
-                {size === 'md' && '15px'}
-                {size === 'lg' && '18px'}
-                {size === 'xl' && '20px'}
-              </td>
-              <td className="p-3">
-                <DrawuiButton size={size}>Button</DrawuiButton>
-              </td>
+     <div className='max-w-md sm:max-w-full overflow-x-scroll'>
+        <table className='table-auto'>
+          <thead>
+            <tr style={{ borderBottom: '2px solid #333' }}>
+              <th className='p-3 text-left'>Token</th>
+              <th className='p-3 text-left'>Width</th>
+              <th className='p-3 text-left'>Height</th>
+              <th className='p-3 text-left'>Font Size</th>
+              <th className='p-3 text-left'>Preview</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sizes.map((size) => (
+              <tr key={size} className='border-b-1 border-gray-300'>
+                <td className="p-3">{size}</td>
+                <td className="p-3">
+                  {size === 'sm' && '100px'}
+                  {size === 'md' && '130px'}
+                  {size === 'lg' && '150px'}
+                  {size === 'xl' && '170px'}
+                </td>
+                <td className="p-3">
+                  {size === 'sm' && '40px'}
+                  {size === 'md' && '50px'}
+                  {size === 'lg' && '60px'}
+                  {size === 'xl' && '70px'}
+                </td>
+                <td className="p-3">
+                  {size === 'sm' && '12px'}
+                  {size === 'md' && '15px'}
+                  {size === 'lg' && '18px'}
+                  {size === 'xl' && '20px'}
+                </td>
+                <td className="p-3">
+                  <DrawuiButton size={size}>Button</DrawuiButton>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+     </div>
 
       <h4>Input Sizes</h4>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr style={{ borderBottom: '2px solid #333' }}>
-            <th className="p-3 text-left">Token</th>
-            <th className="p-3 text-left">Height</th>
-            <th className="p-3 text-left">Font Size</th>
-            <th className="p-3 text-left">Padding X</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sizes.map((size) => (
-            <tr key={size} className='border-b-1 border-gray-300'>
-              <td className="p-3">{size}</td>
-              <td className="p-3">
-                {size === 'sm' && '32px'}
-                {size === 'md' && '40px'}
-                {size === 'lg' && '48px'}
-                {size === 'xl' && '48px'}
-              </td>
-              <td className="p-3">
-                {size === 'sm' && '12px'}
-                {size === 'md' && '14px'}
-                {size === 'lg' && '16px'}
-                {size === 'xl' && '16px'}
-              </td>
-              <td className="p-3">
-                {size === 'sm' && '8px'}
-                {size === 'md' && '12px'}
-                {size === 'lg' && '16px'}
-                {size === 'xl' && '16px'}
-              </td>
+      <div className='max-w-md sm:max-w-full overflow-x-scroll'>
+        <table className='table-auto'>
+          <thead>
+            <tr style={{ borderBottom: '2px solid #333' }}>
+              <th className="p-3 text-left">Token</th>
+              <th className="p-3 text-left">Height</th>
+              <th className="p-3 text-left">Font Size</th>
+              <th className="p-3 text-left">Padding X</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sizes.map((size) => (
+              <tr key={size} className='border-b-1 border-gray-300'>
+                <td className="p-3">{size}</td>
+                <td className="p-3">
+                  {size === 'sm' && '32px'}
+                  {size === 'md' && '40px'}
+                  {size === 'lg' && '48px'}
+                  {size === 'xl' && '48px'}
+                </td>
+                <td className="p-3">
+                  {size === 'sm' && '12px'}
+                  {size === 'md' && '14px'}
+                  {size === 'lg' && '16px'}
+                  {size === 'xl' && '16px'}
+                </td>
+                <td className="p-3">
+                  {size === 'sm' && '8px'}
+                  {size === 'md' && '12px'}
+                  {size === 'lg' && '16px'}
+                  {size === 'xl' && '16px'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
@@ -756,6 +834,7 @@ export const componentRegistry = {
   DividerPropsTable: DividerPropsTable,
   DividerExample:DividerExample,
   CollapseDemo: CollapseDemo,
+  DrawuiInputPropsTable: DrawuiInputPropsTable,
   CollapseExamples: CollapseExamples,
   CollapsePropsTable: CollapsePropsTable,
   IconsGallery:IconsGallery,
