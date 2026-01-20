@@ -56,6 +56,7 @@ export const DocsComponentsRenderer: React.FC<DocsComponentsRendererProps> = ({ 
             return <div key={index} className="text-red-500">Component not found: {block.componentId}</div>;
 
           default:
+            //intercept unmaneged new types and give error
             const _exhaustive: never = block.type;
             return _exhaustive;
         }

@@ -34,7 +34,7 @@ export const ChangelogRenderer: React.FC<ChangelogProps> = ({ changelog }) => {
    const typeColorMap: Record<string,string> = {
       "add":"#c8ebd4ff",
       "fix":"#e38787ff",
-      "edit":"#c0e1deff",
+      "edit":"#e9f5f4ff",
    }
 
    if (!mounted) return null

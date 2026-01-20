@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.3",
+    "date": "2026-01-20",
+    "changes": [
+      {
+        "title": "Removed hover on Cards",
+        "type":"edit",
+        "items": [
+          "Removed hover effects on component DrawuiCard for avoiding continous re-renderings"
+        ]
+      }
+    ]
+  },
+  {
     "version": "0.2.2",
     "date": "2026-01-19",
     "changes": [

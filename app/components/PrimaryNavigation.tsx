@@ -29,6 +29,11 @@ export default function PrimaryNavigation({toggleDrawer}:NavProps) {
             NPM
          </Link>
       </div>
+      <div>
+         <Link onClick={toggleDrawer} href="https://github.com/CaranDesign/drawui" target="_blank" className="text-gray-700 flex dark:text-gray-300 hover:text-blue-500">
+            <img src={"/icons/draw-star.svg"} className='w-5'/> GitHub
+         </Link>
+      </div>
    </nav>
   )
 }

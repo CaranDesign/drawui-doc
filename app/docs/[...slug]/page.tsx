@@ -1,7 +1,6 @@
 // docs/[...slug]/page.tsx
 import React from 'react';
 import docs from '../../content/docs/docs.json';
-import { componentRegistry } from '@/app/components/docs/DocsComponentsRegistry';
 import { DocsComponentsRenderer } from '@/app/components/docs/DocsRenderer';
 
 type BlockType = 'text' | 'heading' | 'code' | 'component';

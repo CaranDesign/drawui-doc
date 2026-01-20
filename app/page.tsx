@@ -5,6 +5,7 @@ import { useWindowWidthContext } from "./context/ContextScreenSize";
 import ComponentShow from "./components/home/ComponentShow";
 import HeroSection from "./components/home/HeroSection";
 import { DrawuiDivider } from "@carandesign/drawui";
+import Cta from "./components/Cta";
 
 export default function App() {
   const screenWidth = useWindowWidthContext()
@@ -32,6 +33,10 @@ export default function App() {
       {/* Masonry Grid Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <ComponentShow/>
+      </section>
+
+      <section className="w-full flex items-center justify-center">
+        <Cta/>
       </section>
     </div>
   );
